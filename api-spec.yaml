@@ -1,0 +1,156 @@
+openapi: 3.0.3
+info:
+  title: Gofiber Hexagonal Architecture RESTful API
+  description: API Spec for Gofiber Hexagonal Architecture RESTful API
+  version: 1.0.0
+servers:
+  - url: http://localhost:3000/
+paths:
+  /api/categories:
+    post:
+      tags:
+        - Category API
+      description: Create new category
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+      responses:
+        '200':
+          description: Success create new category
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                      name:
+                        type: string
+                      created_at:
+                        type: number
+                      updated_at:
+                        type: number
+
+    get:
+      tags:
+        - Category API
+      description: Get all categories
+      responses:
+        '200':
+          description: Success get list of categories
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                        name:
+                          type: string
+                        created_at:
+                          type: number
+                        updated_at:
+                          type: number
+
+  /api/categories/{categoryId}:
+    get:
+      tags:
+        - Category API
+      description: Get category by id
+      parameters:
+        - name: categoryId
+          in: path
+          required: true
+          schema:
+            type: number
+      responses:
+        '200':
+          description: Success get category
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                      name:
+                        type: string
+                      created_at:
+                        type: number
+                      updated_at:
+                        type: number
+
+    put:
+      tags:
+        - Category API
+      description: Update category by id
+      parameters:
+        - name: categoryId
+          in: path
+          required: true
+          schema:
+            type: number
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+      responses:
+        '200':
+          description: Success update category
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                      name:
+                        type: string
+                      created_at:
+                        type: number
+                      updated_at:
+                        type: number
+
+    delete:
+      tags:
+        - Category API
+      description: Delete category by id
+      parameters:
+        - name: categoryId
+          in: path
+          required: true
+          schema:
+            type: number
+      responses:
+        '200':
+          description: Success delete category
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: boolean
