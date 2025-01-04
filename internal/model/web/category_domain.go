@@ -23,8 +23,3 @@ type DeleteCategoryRequest struct {
 type GetCategoryRequest struct {
 	ID string `json:"-" validate:"required,max=100,uuid"`
 }
-
-type ListCategoryRequest struct {
-	ID   string `json:"-" validate:"required,max=100,uuid"`
-	Name string `validate:"required,max=100" json:"name"`
-}
